@@ -263,7 +263,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
 /* =========================================
    MOBILE RESPONSIVENESS (The part that was missing)
    ========================================= */
-@media (max-width: 900px) {
+@media (max-width: 400px) {
   .hero-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
   .hero-actions { justify-content: center; }
   .portrait-wrap { margin-top: 20px; }
@@ -273,13 +273,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
   .step:last-child { border-bottom: none; }
 }
 
-@media (max-width: 860px) {
-  .nav-links a:not(.nav-cta) { display: none; }
-  .grid-3, .projects, .about-grid { grid-template-columns: 1fr !important; }
-  .trust-inner { justify-content: center; text-align: center; }
-  .footer-inner { justify-content: center; text-align: center; }
-  .quote { padding: 30px 20px; }
-  .quote p { font-size: 1.15rem; }
+
 /* =========================================
    MOBILE HAMBURGER MENU (FIXED)
    ========================================= */
@@ -296,7 +290,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
 }
 .menu-toggle:hover { background: var(--surface-2); }
 
-@media (max-width: 700px) {
+@media (max-width: 500px) {
   /* Show the hamburger button */
   .menu-toggle { display: block; }
   
