@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work & About — Mugerwa Marvin</title>
+    <meta name="description" content="View the portfolio and projects of Mugerwa Marvin, including custom web systems and IT support for St. Edward High School Lubaga.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="light">
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="container nav-inner">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">M</span>
+                <span class="brand-name"><b>Mugerwa</b> Marvin</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html#services">Services</a>
+                <a href="work.html">Work &amp; About</a>
+                <a href="contact.html">Contact &amp; Pricing</a>
+                <a href="contact.html" class="nav-cta">Start a project</a>
+                <button class="theme-toggle" id="themeBtn" aria-label="Toggle theme">◐</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- PAGE HEADER -->
+    <header class="hero">
+        <div class="container">
+            <div class="eyebrow">Selected work</div>
+            <h1>Projects &amp; <em>Builds</em></h1>
+            <p class="lead">Real systems built and managed for real clients. Click any image to view it full-screen.</p>
+        </div>
+    </header>
+
+    <!-- PROJECTS SECTION -->
+    <section id="work">
+        <div class="container">
+            <div class="projects">
+                
+                <!-- PROJECT 1 -->
+                <div class="project reveal">
+                    <div class="thumb" onclick="openLightbox('images/food-dashboard.png')">
+                        <img src="images/food-dashboard.png" alt="St. Edward Food Store Dashboard">
+                    </div>
+                    <div class="body">
+                        <span class="tag">Web Development</span>
+                        <h4>St. Edward School Food Store</h4>
+                        <p>A custom inventory and stock management system built for St. Edward High School Lubaga. Features include stock-in/out logging, approval thresholds, supplier tracking, and audit logs.</p>
+                        <span class="outcome">Outcome: Streamlined school inventory</span>
+                    </div>
+                </div>
+
+                <!-- PROJECT 2 -->
+                <div class="project reveal">
+                    <div class="thumb" onclick="openLightbox('images/food-approvals.png')">
+                        <img src="images/food-approvals.png" alt="St. Edward Food Store Approvals">
+                    </div>
+                    <div class="body">
+                        <span class="tag">Web Development</span>
+                        <h4>Stock Approvals &amp; Audit Logs</h4>
+                        <p>Secure approval workflows ensuring large stock-out requests require Super Admin authorization. Connected live to the school's Firestore database.</p>
+                        <span class="outcome">Outcome: Prevented inventory leakage</span>
+                    </div>
+                </div>
+
+                <!-- PROJECT 3 -->
+                <div class="project reveal">
+                    <div class="thumb" onclick="openLightbox('images/zeraki-exams.png')">
+                        <img src="images/zeraki-exams.png" alt="Zeraki Exams Dashboard">
+                    </div>
+                    <div class="body">
+                        <span class="tag">IT Support &amp; System Management</span>
+                        <h4>Zeraki Analytics Management</h4>
+                        <p>Day-to-day administration of the Zeraki school management system. Managing student databases, setting up exams, and generating report cards for St. Edward High School.</p>
+                        <span class="outcome">Outcome: Reliable exam data</span>
+                    </div>
+                </div>
+
+                <!-- PROJECT 4 -->
+                <div class="project reveal">
+                    <div class="thumb" onclick="openLightbox('images/zeraki 1.png')">
+                        <img src="images/zeraki 1.png" alt="Zeraki Student Search">
+                    </div>
+                    <div class="body">
+                        <span class="tag">IT Support &amp; System Management</span>
+                        <h4>Student Database Administration</h4>
+                        <p>Maintaining accurate student records, handling admissions, updating profiles, and managing user accounts within the Zeraki platform.</p>
+                        <span class="outcome">Outcome: Accurate student records</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="alt reveal">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">About Me</div>
+                <h2>Practical, dependable, plain‑spoken</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:56px;align-items:start" class="about-grid">
+                <div>
+                    <p style="font-size:1.08rem;font-weight:300;color:var(--ink-soft);margin-bottom:20px">
+                        I'm Mugerwa Marvin, an IT professional and student at Muteesa I Royal University, Uganda. I build websites and manage the systems behind them. Currently, I manage the IT infrastructure and Zeraki systems at St. Edward High School Lubaga.
+                    </p>
+                    <p style="font-size:1.08rem;font-weight:300;color:var(--ink-soft)">
+                        I'm affordable, responsive, and I explain things in plain language. My goal is simple: technology that works, and a client who feels looked after.
+                    </p>
+                </div>
+                <div>
+                    <div class="eyebrow" style="margin-bottom:14px">Toolkit</div>
+                    <div class="skills">
+                        <span class="chip">HTML5</span>
+                        <span class="chip">CSS3</span>
+                        <span class="chip">JavaScript</span>
+                        <span class="chip">Responsive Design</span>
+                        <span class="chip">WordPress</span>
+                        <span class="chip">Custom Web Apps</span>
+                        <span class="chip">Zeraki System</span>
+                        <span class="chip">Hardware Troubleshooting</span>
+                        <span class="chip">Network Setup</span>
+                        <span class="chip">Data Backup</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL -->
+    <section class="reveal">
+        <div class="container">
+            <div class="quote">
+                <p>"Marvin is reliable, quick to respond, and gets the job done. He built our website and now handles our IT support — we don't worry about technical problems anymore."</p>
+                <div class="who">Satisfied client <span>· replace with a real testimonial when you have one</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container footer-inner">
+           <span>© <span id="year"></span> Mugerwa Marvin · Uganda · Last Updated: <span id="update-date">Nov 2026</span></span>
+            <span>
+                <a href="mailto:marvinmarvel948@gmail.com">Email</a> · 
+                <a href="https://wa.me/256755630074">WhatsApp</a> · 
+                <a href="tel:+256755630074">Call</a>
+            </span>
+        </div>
+    </footer>
+
+    <!-- THE LIGHTBOX HTML -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" src="" alt="Project Screenshot Fullscreen">
+    </div>
+
+    <!-- External JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
