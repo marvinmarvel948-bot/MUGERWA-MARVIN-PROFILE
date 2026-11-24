@@ -35,68 +35,58 @@
         </div>
     </div>
 
-    <script type="module">
+       <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
         import { getFirestore, collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
-        // --- PASTE YOUR REAL FIREBASE CONFIG HERE ---
+        // PASTE YOUR REAL FIREBASE CONFIG HERE
         const firebaseConfig = {
-            apiKey: "PASTE_YOUR_API_KEY_HERE",
-            authDomain: "PASTE_YOUR_AUTH_DOMAIN_HERE",
-            projectId: "PASTE_YOUR_PROJECT_ID_HERE",
-            storageBucket: "PASTE_YOUR_STORAGE_BUCKET_HERE",
-            messagingSenderId: "PASTE_YOUR_SENDER_ID_HERE",
-            appId: "PASTE_YOUR_APP_ID_HERE"
-        };
-        // --------------------------------------------
+  apiKey: "AIzaSyD6iItiAiyAo0czgZJpsDlZgoluWhFSv-4",
+  authDomain: "marvin-portfolio-e525d.firebaseapp.com",
+  databaseURL: "https://marvin-portfolio-e525d-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "marvin-portfolio-e525d",
+  storageBucket: "marvin-portfolio-e525d.firebasestorage.app",
+  messagingSenderId: "867224014009",
+  appId: "1:867224014009:web:c2a5688e39b1b58d501f68"
+};
 
-        try {
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);
-            const container = document.getElementById('messages-container');
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app); // <--- THIS IS THE MAGIC LINE
+        const container = document.getElementById('messages-container');
 
-            async function loadMessages() {
-                try {
-                    const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
-                    const querySnapshot = await getDocs(q);
-                    
-                    if(querySnapshot.empty) {
-                        container.innerHTML = `<div class="status-box"><h3>Your inbox is empty</h3><p>When a client fills out the contact form, their message will appear here.</p></div>`;
-                        return;
-                    }
-
-                    let html = `<table class="message-table"><thead><tr><th>Date</th><th>Client Name</th><th>Email</th><th>Project Details</th></tr></thead><tbody>`;
-                    
-                    querySnapshot.forEach((doc) => {
-                        const data = doc.data();
-                        const date = data.timestamp ? data.timestamp.toDate().toLocaleString() : "Just now";
-                        html += `<tr>
-                            <td>${date}</td>
-                            <td><strong>${data.name}</strong></td>
-                            <td><a href="mailto:${data.email}" style="color: var(--gold); text-decoration: none;">${data.email}</a></td>
-                            <td>${data.message}</td>
-                        </tr>`;
-                    });
-                    
-                    html += `</tbody></table>`;
-                    container.innerHTML = html;
-
-                } catch (error) {
-                    console.error("Error fetching data: ", error);
-                    container.innerHTML = `<div class="status-box" style="border-color: red; color: red;"><h3>Database Error</h3><p>${error.message}</p></div>`;
+        async function loadMessages() {
+            try {
+                const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
+                const querySnapshot = await getDocs(q);
+                
+                if(querySnapshot.empty) {
+                    container.innerHTML = `<div class="status-box"><h3>Your inbox is empty</h3><p>When a client fills out the contact form, their message will appear here.</p></div>`;
+                    return;
                 }
-            }
 
-            loadMessages();
-        } catch (initError) {
-            console.error("Firebase Initialization Error: ", initError);
-            document.getElementById('messages-container').innerHTML = `
-                <div class="status-box" style="border-color: red; color: red;">
-                    <h3>Configuration Error</h3>
-                    <p>${initError.message}</p>
-                    <p style="font-size: 0.8rem; margin-top: 10px;">Check your firebaseConfig API keys.</p>
-                </div>`;
+                let html = `<table class="message-table"><thead><tr><th>Date</th><th>Client Name</th><th>Email</th><th>Project Details</th></tr></thead><tbody>`;
+                
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const date = data.timestamp ? data.timestamp.toDate().toLocaleString() : "Just now";
+                    html += `<tr>
+                        <td>${date}</td>
+                        <td><strong>${data.name}</strong></td>
+                        <td><a href="mailto:${data.email}" style="color: var(--gold); text-decoration: none;">${data.email}</a></td>
+                        <td>${data.message}</td>
+                    </tr>`;
+                });
+                
+                html += `</tbody></table>`;
+                container.innerHTML = html;
+
+            } catch (error) {
+                console.error("Error fetching data: ", error);
+                container.innerHTML = `<div class="status-box" style="border-color: red; color: red;"><h3>Database Error</h3><p>${error.message}</p></div>`;
+            }
         }
+
+        loadMessages();
     </script>
 </body>
 </html>
