@@ -66,3 +66,14 @@ document.querySelectorAll('.faq-question').forEach(question => {
         item.classList.toggle('active');
     });
 });
+// Mobile Menu Toggle
+const menuBtn = document.getElementById('menuBtn');
+const navLinks = document.querySelector('.nav-links');
+
+if(menuBtn) {
+    menuBtn.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        // Change icon between hamburger and X
+        menuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+    });
+}
