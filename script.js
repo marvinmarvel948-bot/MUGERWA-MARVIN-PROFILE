@@ -66,14 +66,14 @@ document.querySelectorAll('.faq-question').forEach(question => {
         item.classList.toggle('active');
     });
 });
-// Mobile Menu Toggle
+// Mobile Hamburger Menu Logic
 const menuBtn = document.getElementById('menuBtn');
 const navLinks = document.querySelector('.nav-links');
 
-if(menuBtn) {
+if (menuBtn) {
     menuBtn.addEventListener('click', () => {
         navLinks.classList.toggle('active');
-        // Change icon between hamburger and X
+        // Change icon to 'X' when open, back to '☰' when closed
         menuBtn.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
     });
 }
