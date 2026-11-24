@@ -296,7 +296,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
 }
 .menu-toggle:hover { background: var(--surface-2); }
 
-@media (max-width: 860px) {
+@media (max-width: 700px) {
   /* Show the hamburger button */
   .menu-toggle { display: block; }
   
