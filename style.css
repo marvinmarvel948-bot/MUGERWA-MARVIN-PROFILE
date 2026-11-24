@@ -281,7 +281,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
   .quote { padding: 30px 20px; }
   .quote p { font-size: 1.15rem; }
 /* =========================================
-   MOBILE HAMBURGER MENU
+   MOBILE HAMBURGER MENU (FIXED)
    ========================================= */
 .menu-toggle {
   display: none; /* Hidden on desktop */
@@ -297,43 +297,46 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
 .menu-toggle:hover { background: var(--surface-2); }
 
 @media (max-width: 860px) {
-  /* Show the hamburger button on mobile */
+  /* Show the hamburger button */
   .menu-toggle { display: block; }
   
-  /* Hide all links by default on mobile */
+  /* Hide the desktop links */
   .nav-links a { display: none; }
   
-  /* When menu is clicked (active), show the dropdown */
+  /* The dropdown container when active */
   .nav-links.active {
+    display: flex !important; /* Force flex */
+    flex-direction: column !important; /* Force vertical stack */
     position: absolute; 
     top: 76px; 
     left: 0; 
     right: 0;
     background: var(--surface);
-    flex-direction: column;
     padding: 20px;
     box-shadow: var(--shadow-lg);
     border-bottom: 1px solid var(--line);
-    display: flex;
     z-index: 100;
+    gap: 0; /* Remove the huge gap */
   }
   
-  /* Show the links inside the active menu */
+  /* Style the links inside the dropdown */
   .nav-links.active a { 
     display: block; 
     width: 100%;
     text-align: center;
-    padding: 15px 0;
+    padding: 16px 0;
     border-bottom: 1px solid var(--line);
+    font-size: 1rem;
   }
   
-  .nav-links.active a:last-child {
+  /* Remove border from last link */
+  .nav-links.active a:last-of-type {
     border-bottom: none;
   }
-}
   
-  .nav-links.active a { display: block; }
-  
-  /* Keep the CTA and buttons visible */
-  .nav-links.active .nav-cta { margin-top: 10px; border-bottom: none; }
+  /* Make the "Start a project" button look good in the menu */
+  .nav-links.active .nav-cta {
+    margin-top: 10px;
+    border: 1px solid var(--navy);
+  }
 }
