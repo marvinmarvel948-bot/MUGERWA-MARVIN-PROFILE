@@ -261,64 +261,76 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
 /* =========================================
-   MOBILE RESPONSIVENESS (Always Visible Links)
+   MOBILE RESPONSIVENESS (Executive Layout)
    ========================================= */
+@media (max-width: 860px) {
+  /* 1. Navigation Bar */
+  .menu-toggle { display: block; } /* Show hamburger */
+  .nav-links { display: none; } /* Hide desktop links */
+  
+  /* Dropdown Menu */
+  .nav-links.active {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    position: absolute; top: 76px; left: 0; width: 100%;
+    background: var(--surface); padding: 20px 0;
+    box-shadow: var(--shadow-lg); border-bottom: 1px solid var(--line);
+  }
+  .nav-links.active a {
+    display: block; width: 100%; text-align: center;
+    padding: 15px 20px; border-bottom: 1px solid var(--line); margin: 0;
+  }
+  .nav-links.active a:last-child { border-bottom: none; }
+  .nav-links.active .nav-cta { margin-top: 15px; border: 1px solid var(--line); }
 
-/* 1. Layout Stacking for Tablets & Phones (max 900px) */
-@media (max-width: 900px) {
-  .hero-grid, .contact-grid, .about-grid { 
-    grid-template-columns: 1fr; 
-    gap: 40px; 
+  /* 2. Hero Section (Stack and Center) */
+  .hero { padding: 40px 0; }
+  .hero-grid { 
+    grid-template-columns: 1fr !important; 
+    gap: 32px; 
     text-align: center; 
   }
-  .hero-actions { justify-content: center; }
+  .eyebrow { justify-content: center; }
+  h1 { font-size: 2.2rem; }
+  .lead { margin: 0 auto 24px; font-size: 1rem; }
+  .hero-actions { 
+    flex-direction: column; 
+    width: 100%; 
+  }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  
+  /* 3. Make the Portrait Full Width on Mobile */
   .portrait-wrap { margin-top: 20px; }
-  .portrait-frame { margin: 0 auto; }
-  .lead { margin: 0 auto 30px; }
+  .portrait-frame { 
+    max-width: 100%; 
+    aspect-ratio: 4/3; /* Wider rectangle instead of tall arch */
+    border-radius: 16px; /* Remove the arch, make it a rounded box */
+  }
+
+  /* 4. Trust Strip (Stack items) */
+  .trust-inner { 
+    flex-direction: column; 
+    align-items: center; 
+    gap: 16px; 
+    text-align: center;
+  }
+
+  /* 5. Sections & Grids (Make everything 1 column) */
+  section { padding: 50px 0; }
+  .grid-3, .projects, .contact-grid, .about-grid { 
+    grid-template-columns: 1fr !important; 
+  }
+  
+  /* Make cards have less padding on phone */
+  .card { padding: 24px 20px; }
+
+  /* 6. Process Steps (Stack vertically) */
   .step { border-right: none; border-bottom: 1px solid var(--line); }
   .step:last-child { border-bottom: none; }
-  .grid-3, .projects { grid-template-columns: 1fr !important; }
-}
 
-/* 2. Mobile Navigation (Always Visible) */
-@media (max-width: 860px) {
-  /* Hide the hamburger button entirely */
-  .menu-toggle { display: none !important; }
-
-  /* Make the nav bar taller and stack the items */
-  .nav-inner { 
-    height: auto; 
-    flex-direction: column; 
-    padding: 15px 0; 
-    gap: 15px; 
-  }
-
-  /* Let the links wrap and center them */
-  .nav-links { 
-    display: flex; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-    gap: 12px; 
-    width: 100%;
-  }
-
-  /* Style the individual links for mobile */
-  .nav-links a { 
-    display: inline-block; 
-    font-size: 0.9rem;
-    padding: 6px 12px;
-    background: var(--surface-2);
-    border-radius: 8px;
-    border: 1px solid var(--line);
-  }
-
-  /* Make the CTA button pop */
-  .nav-links .nav-cta {
-    background: var(--navy);
-    color: #fff !important;
-    border-color: var(--navy);
-    width: 100%; /* Full width button on its own line */
-    text-align: center;
-    margin-top: 5px;
-  }
+  /* 7. Footer & Quote */
+  .footer-inner { flex-direction: column; text-align: center; gap: 16px; }
+  .quote { padding: 24px 20px; }
+  .quote p { font-size: 1.1rem; }
 }
