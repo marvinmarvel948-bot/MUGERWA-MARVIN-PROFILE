@@ -201,11 +201,63 @@
         </div>
     </footer>
 
-    <!-- External JavaScript -->
+       <!-- Your main script -->
     <script src="script.js"></script>
 
-      <!-- Your Firebase Backend Script -->
-    <script type="module" src="firebase.js"></script>
+    <!-- FIREBASE BACKEND -->
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "PASTE_YOUR_API_KEY_HERE",
+        authDomain: "PASTE_YOUR_AUTH_DOMAIN_HERE",
+        projectId: "PASTE_YOUR_PROJECT_ID_HERE",
+        storageBucket: "PASTE_YOUR_STORAGE_BUCKET_HERE",
+        messagingSenderId: "PASTE_YOUR_SENDER_ID_HERE",
+        appId: "PASTE_YOUR_APP_ID_HERE"
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      const contactForm = document.getElementById('contactForm');
+      if (contactForm) {
+          contactForm.addEventListener('submit', async (e) => {
+              e.preventDefault();
+              const name = document.getElementById('name').value;
+              const email = document.getElementById('email').value;
+              const message = document.getElementById('message').value;
+              const btn = contactForm.querySelector('button[type="submit"]');
+              const status = document.getElementById('formStatus');
+
+              btn.textContent = "Sending...";
+              btn.disabled = true;
+
+              try {
+                  await addDoc(collection(db, "messages"), {
+                      name: name,
+                      email: email,
+                      message: message,
+                      timestamp: new Date()
+                  });
+                  status.textContent = "Message sent successfully! I will reply shortly.";
+                  status.style.color = "green";
+                  contactForm.reset();
+              } catch (error) {
+                  console.error("Error: ", error);
+                  // THIS WILL SHOW THE EXACT ERROR ON YOUR SCREEN
+                  status.textContent = "Error: " + error.message;
+                  status.style.color = "red";
+              } finally {
+                  btn.textContent = "Send message →";
+                  btn.disabled = false;
+              }
+          });
+      }
+    </script>
+</body>
+</html>
     
 </body>
 </html>
