@@ -162,28 +162,25 @@
                     </div>
                 </div>
 
-                <!-- Contact Form -->
-                <form id="contactForm">
-                    <div class="field">
-                        <label for="name">Your name</label>
-                        <input id="name" name="name" type="text" required placeholder="Jane Doe">
-                    </div>
-                    <div class="field">
-                        <label for="email">Your email</label>
-                        <input id="email" name="email" type="email" required placeholder="jane@company.com">
-                    </div>
-                    <div class="field">
-                        <label for="message">What do you need?</label>
-                        <textarea id="message" name="message" required placeholder="Tell me about your project or problem..."></textarea>
-                    </div>
-                    
-                    <!-- FormSubmit Hidden Settings -->
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_subject" value="New enquiry — Mugerwa Marvin website">
-                    
-                    <button type="submit" class="btn btn-primary">Send message →</button>
-                    <p class="form-note">Sends straight to my email. No signup required.</p>
-                </form>
+               <form id="contactForm">
+    <div class="field">
+        <label for="name">Your name</label>
+        <input id="name" name="name" type="text" required placeholder="Jane Doe">
+    </div>
+    <div class="field">
+        <label for="email">Your email</label>
+        <input id="email" name="email" type="email" required placeholder="jane@company.com">
+    </div>
+    <div class="field">
+        <label for="message">What do you need?</label>
+        <textarea id="message" name="message" required placeholder="Tell me about your project..."></textarea>
+    </div>
+    
+    <!-- Notice there is no action="" or method="POST" here anymore -->
+    
+    <button type="submit" class="btn btn-primary">Send message →</button>
+    <p class="form-note" id="formStatus">Sends straight to my database.</p>
+</form>
             </div>
         </div>
     </section>
@@ -201,64 +198,60 @@
         </div>
     </footer>
 
-       <!-- Your main script -->
+           <!-- External JS for animations -->
     <script src="script.js"></script>
 
-    <!-- FIREBASE BACKEND -->
+    <!-- Firebase Script -->
     <script type="module">
-      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
-      import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
-     const firebaseConfig = {
-  apiKey: "AIzaSyD6iItiAiyAo0czgZJpsDlZgoluWhFSv-4",
-  authDomain: "marvin-portfolio-e525d.firebaseapp.com",
-  databaseURL: "https://marvin-portfolio-e525d-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "marvin-portfolio-e525d",
-  storageBucket: "marvin-portfolio-e525d.firebasestorage.app",
-  messagingSenderId: "867224014009",
-  appId: "1:867224014009:web:c2a5688e39b1b58d501f68"
-};
+        const firebaseConfig = {
+            apiKey: "PASTE_YOUR_API_KEY_HERE",
+            authDomain: "PASTE_YOUR_AUTH_DOMAIN_HERE",
+            projectId: "PASTE_YOUR_PROJECT_ID_HERE",
+            storageBucket: "PASTE_YOUR_STORAGE_BUCKET_HERE",
+            messagingSenderId: "PASTE_YOUR_SENDER_ID_HERE",
+            appId: "PASTE_YOUR_APP_ID_HERE"
+        };
 
-      const app = initializeApp(firebaseConfig);
-      const db = getFirestore(app);
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-      const contactForm = document.getElementById('contactForm');
-      if (contactForm) {
-          contactForm.addEventListener('submit', async (e) => {
-              e.preventDefault();
-              const name = document.getElementById('name').value;
-              const email = document.getElementById('email').value;
-              const message = document.getElementById('message').value;
-              const btn = contactForm.querySelector('button[type="submit"]');
-              const status = document.getElementById('formStatus');
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault(); // THIS STOPS THE PAGE FROM RELOADING
+                
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                const btn = contactForm.querySelector('button[type="submit"]');
+                const status = document.getElementById('formStatus');
 
-              btn.textContent = "Sending...";
-              btn.disabled = true;
+                btn.textContent = "Sending...";
+                btn.disabled = true;
 
-              try {
-                  await addDoc(collection(db, "messages"), {
-                      name: name,
-                      email: email,
-                      message: message,
-                      timestamp: new Date()
-                  });
-                  status.textContent = "Message sent successfully! I will reply shortly.";
-                  status.style.color = "green";
-                  contactForm.reset();
-              } catch (error) {
-                  console.error("Error: ", error);
-                  // THIS WILL SHOW THE EXACT ERROR ON YOUR SCREEN
-                  status.textContent = "Error: " + error.message;
-                  status.style.color = "red";
-              } finally {
-                  btn.textContent = "Send message →";
-                  btn.disabled = false;
-              }
-          });
-      }
+                try {
+                    await addDoc(collection(db, "messages"), {
+                        name: name,
+                        email: email,
+                        message: message,
+                        timestamp: new Date()
+                    });
+                    status.textContent = "Message sent successfully! I will reply shortly.";
+                    status.style.color = "green";
+                    contactForm.reset();
+                } catch (error) {
+                    console.error("Error: ", error);
+                    status.textContent = "Error: " + error.message;
+                    status.style.color = "red";
+                } finally {
+                    btn.textContent = "Send message →";
+                    btn.disabled = false;
+                }
+            });
+        }
     </script>
-</body>
-</html>
-    
 </body>
 </html>
