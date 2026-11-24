@@ -261,22 +261,26 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
 
 /* =========================================
-   MOBILE RESPONSIVENESS (The part that was missing)
+   MOBILE & TABLET RESPONSIVENESS (UPGRADED)
    ========================================= */
-@media (max-width: 400px) {
-  .hero-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+
+/* 1. Layout Stacking for Tablets & Phones (max 900px) */
+@media (max-width: 900px) {
+  .hero-grid, .contact-grid, .about-grid { 
+    grid-template-columns: 1fr; 
+    gap: 40px; 
+    text-align: center; 
+  }
   .hero-actions { justify-content: center; }
   .portrait-wrap { margin-top: 20px; }
   .portrait-frame { margin: 0 auto; }
   .lead { margin: 0 auto 30px; }
   .step { border-right: none; border-bottom: 1px solid var(--line); }
   .step:last-child { border-bottom: none; }
+  .grid-3, .projects { grid-template-columns: 1fr !important; }
 }
 
-
-/* =========================================
-   MOBILE HAMBURGER MENU (FIXED)
-   ========================================= */
+/* 2. Mobile Hamburger Menu (max 860px) */
 .menu-toggle {
   display: none; /* Hidden on desktop */
   background: transparent; 
@@ -290,7 +294,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
 }
 .menu-toggle:hover { background: var(--surface-2); }
 
-@media (max-width: 500px) {
+@media (max-width: 860px) {
   /* Show the hamburger button */
   .menu-toggle { display: block; }
   
@@ -299,8 +303,8 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
   
   /* The dropdown container when active */
   .nav-links.active {
-    display: flex !important; /* Force flex */
-    flex-direction: column !important; /* Force vertical stack */
+    display: flex !important; 
+    flex-direction: column !important; 
     position: absolute; 
     top: 76px; 
     left: 0; 
@@ -310,7 +314,7 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
     box-shadow: var(--shadow-lg);
     border-bottom: 1px solid var(--line);
     z-index: 100;
-    gap: 0; /* Remove the huge gap */
+    gap: 0; 
   }
   
   /* Style the links inside the dropdown */
