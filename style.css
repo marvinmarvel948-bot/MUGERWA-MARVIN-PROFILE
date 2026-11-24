@@ -83,6 +83,46 @@ h1 em{font-style:italic;color:var(--gold)}
 .btn-outline{border-color:var(--line);color:var(--ink)}
 .btn-outline:hover{background:var(--surface-2)}
 
+/* Hero Layout Upgrade */
+.hero-content {
+  text-align: left;
+}
+.hero-content h1 {
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+.hero-content .eyebrow {
+  justify-content: flex-start;
+}
+.hero-content .lead {
+  margin: 0 0 32px;
+}
+.hero-content .hero-actions {
+  justify-content: flex-start;
+}
+
+.hero-image-full {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero-image-full img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Mobile Stacking */
+@media (max-width: 860px) {
+  .hero-content { text-align: center; }
+  .hero-content .eyebrow { justify-content: center; }
+  .hero-content .hero-actions { justify-content: center; }
+}
+
 /* PORTRAIT */
 .portrait-wrap{position:relative;display:flex;justify-content:center}
 .portrait-frame{
