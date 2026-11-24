@@ -281,3 +281,38 @@ footer{border-top:1px solid var(--line);padding:44px 0;background:var(--surface)
   .quote { padding: 30px 20px; }
   .quote p { font-size: 1.15rem; }
 }
+/* Mobile Menu Button */
+.menu-toggle {
+  display: none;
+  background: transparent; border: 1px solid var(--line); color: var(--ink);
+  font-size: 1.5rem; padding: 5px 12px; border-radius: 8px; cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .menu-toggle { display: block; }
+  
+  /* Hide the links by default on mobile */
+  .nav-links a {
+    display: none; 
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  
+  /* When the menu is clicked, show the links */
+  .nav-links.active {
+    position: absolute; top: 76px; left: 0; right: 0;
+    background: var(--surface);
+    flex-direction: column;
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+    border-bottom: 1px solid var(--line);
+    display: flex;
+  }
+  
+  .nav-links.active a { display: block; }
+  
+  /* Keep the CTA and buttons visible */
+  .nav-links.active .nav-cta { margin-top: 10px; border-bottom: none; }
+}
